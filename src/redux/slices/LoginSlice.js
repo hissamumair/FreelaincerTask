@@ -12,7 +12,8 @@ export const loginUser = createAsyncThunk(
     try {
       
       const response = await axios.post(`${baseUrl}${signup}`, formData);
-      
+      console.log("Login Response:", response.data); // ✅ Check API response
+
       const {userType} = response.data.data; // Make sure the API returns userType
       return {data: response.data, userType};
     } catch (error) {

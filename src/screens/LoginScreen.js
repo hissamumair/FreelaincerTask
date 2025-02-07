@@ -23,11 +23,23 @@ const LoginScreen = ({navigation}) => {
 
   const handleLogin = async () => {
     setIsValidating(true);
+  
+    console.log("Validating login...");
+  
     if (Object.keys(errors).length === 0) {
+      console.log("No validation errors. Proceeding with login...");
+      console.log("Email:", email);
+      console.log("Password:", password);
+  
       // Dispatch the login action only if there are no validation errors
-      dispatch(loginUser({email, password}));
+      dispatch(loginUser({ email, password }));
+  
+      console.log("Login action dispatched!");
+    } else {
+      console.log("Validation errors found:", errors);
     }
   };
+  
   // console.log('errors', errors)
   // useEffect to monitor changes in errors and trigger login if validation passes
   useEffect(() => {
@@ -110,7 +122,7 @@ const LoginScreen = ({navigation}) => {
           error={errors.password}
         />
         <CustomButton
-          title={loading ? 'Loading...' : 'Submit'}
+          title={loading ? 'Loading...' : 'Submitt'}
           onPress={handleLogin}
           style={styles.customButton}
           disabled={loading}
